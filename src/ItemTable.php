@@ -3,11 +3,14 @@ declare(strict_types=1);
 
 namespace rarkhopper\gacha;
 
-class ItemTable{
+abstract class ItemTable{
 	/** @var \SplFixedArray<int, array> */
 	protected \SplFixedArray $table;
 	/** @var IGachaItem はずれの場合付与 */
 	protected IGachaItem $fallback;
+
+	/** @return array<IGachaItem> */
+	abstract public function pop(int $count):array;
 
 	public function __construct(IGachaItem $fallback_item, IGachaItem ...$items){
 		$this->table = new \SplFixedArray(100);
