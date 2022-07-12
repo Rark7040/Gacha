@@ -3,10 +3,10 @@ declare(strict_types=1);
 namespace rarkhopper\gacha;
 
 class GachaHolder{
-	/** @var array<int, Gacha> */
+	/** @var array<string, Gacha> */
 	protected array $gacha_list = [];
 
-	public function create(string $title, ):void{
-
+	public function create(string $title, string $description, ItemTable $items, Ticket $ticket):Gacha{
+		return new Gacha($title, $description, $items, $ticket); //TODO runtime idで管理,,,?
 	}
 }
