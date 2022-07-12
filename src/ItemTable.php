@@ -6,9 +6,12 @@ namespace rarkhopper\gacha;
 class ItemTable{
 	/** @var \SplFixedArray<int, array> */
 	protected \SplFixedArray $table;
+	/** @var IGachaItem はずれの場合付与 */
+	protected IGachaItem $fallback;
 
-	public function __construct(IGachaItem ...$items){
+	public function __construct(IGachaItem $fallback_item, IGachaItem ...$items){
 		$this->table = new \SplFixedArray(100);
+		$this->fallback = $fallback_item;
 
 		if(count($items) === 0){
 			throw new \LogicException('ItemTable::__construct()::$items is expects to be IGachaItems of 1 or more.');
