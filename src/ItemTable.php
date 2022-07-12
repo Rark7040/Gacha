@@ -9,6 +9,10 @@ class ItemTable{
 
 	public function __construct(IGachaItem ...$items){
 		$this->table = new \SplFixedArray(100);
+
+		if(count($items) === 0){
+			throw new \LogicException('ItemTable::__construct()::$items is expects to be IGachaItems of 1 or more.');
+		}
 		$this->putItems(...$items);
 	}
 
