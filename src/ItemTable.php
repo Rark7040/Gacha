@@ -24,7 +24,8 @@ abstract class ItemTable{
 
 	protected function putItems(IGachaItem ...$items):void{
 		foreach($items as $item){
-			$emmit_per = $item->getEmissionPercent();
+			$rarity = $item->getRarity();
+			$emmit_per = $rarity->getEmissionPercent();
 
 			if(!$this->validateEmmitPer($emmit_per)){
 				throw new \LogicException('IGachaItem::getEmissionPercent() was returned invalid value. @see line 9 in IGachaItem');
