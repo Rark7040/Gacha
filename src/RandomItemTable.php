@@ -24,7 +24,7 @@ class RandomItemTable extends ItemTable{
 		for($i = 0; $i < 1000; ++$i){
 			$k = array_rand($this->table, 1);
 
-			if($this->calcPercent($this->table[$k])){
+			if($this->calcPercent($k/100)){
 				$items = $this->table[$k];
 				return $items[array_rand($items, 1)];
 			}
