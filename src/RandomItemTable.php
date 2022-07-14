@@ -3,12 +3,14 @@ declare(strict_types=1);
 
 namespace rarkhopper\gacha;
 
+
 class RandomItemTable extends ItemTable{
 	/**
 	 * @throws \Exception
 	 * @return array<IGachaItem>
 	 */
 	public function pop(int $count):array{
+		if($count < 1) throw new \LogicException('count must be greater than zero');
 		$result = [];
 
 		for(; $count !== 0; --$count){

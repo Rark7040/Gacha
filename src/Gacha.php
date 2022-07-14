@@ -15,4 +15,6 @@ class Gacha{
 		$this->table = $table;
 		$this->ticket = $ticket;
 	}
+
+
 }
