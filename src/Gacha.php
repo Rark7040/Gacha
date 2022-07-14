@@ -18,6 +18,14 @@ class Gacha{
 		$this->ticket = $ticket;
 	}
 
+	public function getName():string{
+		return $this->name;
+	}
+
+	public function getDescription():string{
+		return $this->description;
+	}
+
 	/**
 	 * @return array<IGachaItem>
 	 */
