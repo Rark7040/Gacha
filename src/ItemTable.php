@@ -22,8 +22,6 @@ abstract class ItemTable{
 	}
 
 	protected function putItems(IGachaItem ...$items):void{
-		$i = 0;
-
 		foreach($items as $item){
 			$rarity = $item->getRarity();
 			$emmit_per = $rarity->getEmissionPercent();
@@ -32,7 +30,6 @@ abstract class ItemTable{
 				throw new \LogicException('IGachaItem::getEmissionPercent() was returned invalid value. @see line 8 in IRarity');
 			}
 			$this->table[(int) $emmit_per*100][] = $item;
-			++$i;
 		}
 	}
 
