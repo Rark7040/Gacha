@@ -5,6 +5,6 @@ namespace rarkhopper\gacha;
 
 interface IRarity{
 	public function getName();
-	/** @return float 0.0 ~ 100.0 */
+	/** @return float 0.01 ~ 100.00 */
 	public function getEmissionPercent():float;
 }
