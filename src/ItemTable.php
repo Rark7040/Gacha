@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace rarkhopper\gacha;
 
 abstract class ItemTable{
-	/** @var \SplFixedArray<int, array> */
-	protected \SplFixedArray $table;
+	/** @var array<int, array<IGachaItem>> */
+	protected array $table = [];
 	/** @var IGachaItem はずれの場合付与 */
 	protected IGachaItem $fallback;
 
@@ -13,7 +13,6 @@ abstract class ItemTable{
 	abstract public function pop(int $count):array;
 
 	public function __construct(IGachaItem $fallback_item, IGachaItem ...$items){
-		$this->table = new \SplFixedArray(100);
 		$this->fallback = $fallback_item;
 
 		if(count($items) === 0){
@@ -23,18 +22,25 @@ abstract class ItemTable{
 	}
 
 	protected function putItems(IGachaItem ...$items):void{
+		$i = 0;
+
 		foreach($items as $item){
 			$rarity = $item->getRarity();
 			$emmit_per = $rarity->getEmissionPercent();
 
 			if(!$this->validateEmmitPer($emmit_per)){
-				throw new \LogicException('IGachaItem::getEmissionPercent() was returned invalid value. @see line 9 in IGachaItem');
+				throw new \LogicException('IGachaItem::getEmissionPercent() was returned invalid value. @see line 8 in IRarity');
 			}
-			$this->table[$emmit_per][] = $item;
+			$this->table[(int) $emmit_per*100][] = $item;
+			++$i;
 		}
 	}
 
 	protected function validateEmmitPer(float $emmit_per):bool{
 		return $emmit_per >= 0 && $emmit_per <= 100;
+	}
+
+	protected function calcPercent(float $percent):bool{
+		return round($percent*100, 0, PHP_ROUND_HALF_ODD) >= random_int(1, 10000);
 	}
 }
