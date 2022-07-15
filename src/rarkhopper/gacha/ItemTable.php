@@ -6,19 +6,14 @@ namespace rarkhopper\gacha;
 abstract class ItemTable{
 	/** @var array<int, array<IGachaItem>> キーは排出確率に100をかけた数 */
 	protected array $table = [];
-	/** @var IGachaItem はずれの場合付与 */
-	protected IGachaItem $fallback;
 
 	/** @return array<IGachaItem> */
 	abstract public function pop(int $count):array;
 
 	/**
-	 * @param IGachaItem $fallback_item
 	 * @param IGachaItem ...$items
 	 */
-	public function __construct(IGachaItem $fallback_item, IGachaItem ...$items){
-		$this->fallback = $fallback_item;
-
+	public function __construct(IGachaItem ...$items){
 		if(count($items) === 0){
 			throw new \LogicException('ItemTable::__construct()::$items is expects to be IGachaItems of 1 or more.');
 		}
