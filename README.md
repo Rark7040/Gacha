@@ -5,7 +5,8 @@ ___
 プラグイン開発者向けのガチャ用ライブラリ<br>
 
 ## 環境
-> **Note**
+
+> **Note** <br>
 > <strong>PHP 8.0</strong> <br>
 > <strong>PocketMine-M</strong>P 4.0.0
 
