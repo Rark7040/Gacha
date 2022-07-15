@@ -1,0 +1,4 @@
+name: Gacha
+version: 1.0.0
+antigen: rarkhopper\gacha
+api: 4.0.0
