@@ -23,12 +23,13 @@ class RandomItemTable extends ItemTable{
 	 * @throws \Exception
 	 */
 	protected function randomPop():IGachaItem{
+		if(count($this->table) === 0) throw new \LogicException('table is empty');
 		for($i = 0; $i < 1000; ++$i){
-			$k = array_rand($this->table, 1);
+			$k = array_rand($this->table);
 
 			if($this->calcPercent($k/100)){
 				$items = $this->table[$k];
-				return $items[array_rand($items, 1)];
+				return $items[array_rand($items)];
 			}
 		}
 		throw new \Exception('Loop is too long');
