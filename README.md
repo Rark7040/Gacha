@@ -3,22 +3,26 @@ ___
 # Virion library for Gacha
 
 プラグイン開発者向けのガチャ用ライブラリ<br>
+<br>
 
 ## 環境
 <strong>PHP 8.0</strong> <br>
-<strong>PocketMine-M</strong>P 4.0.0
-
+<strong>PocketMine-M</strong>P 4.0.0 <br>
+<br>
 
 
 ## インストール
 1. [VirionTools](https://github.com/ifera-mc/VirionTools)を`plugins`の中に配置します
 2. サーバーを再起動します
 3. `plugin_data/VirionTools/builds`にダウンロードした`Gacha.phar`を配置します
-4. コマンドラインより、`$ iv Gacha [導入したいプラグインの名前]`を実行します
+4. コマンドラインより、`$ iv Gacha [導入したいプラグインの名前]`を実行します <br>
+<br>
 
 ## サンプル
-https://github.com/Rark7040/GachaExample
+[サンプルコード]<br>
+https://github.com/Rark7040/GachaExample <br>
 
+<br>
 
 ```php
 $gacha = new Gacha(
