@@ -29,10 +29,17 @@ class Gacha{
 	/**
 	 * @return array<IGachaItem>
 	 */
-	public function roll(Player $player, int $count):array{
+	public function roll(Player $player, string $failed_msg, int $count):void{
 		if($count < 1) throw new \LogicException('count must be greater than zero');
-		if($this->canRoll($player, $count)) return [];
-		return $this->table->pop($count);
+		if(!$this->canRoll($player, $count)){
+			$player->sendMessage($failed_msg);
+			return;
+		}
+		$this->ticket->consume($player, $count);
+
+		foreach($this->table->pop($count) as $item){
+			$item->giveItem($player);
+		}
 	}
 
 	public function canRoll(Player $player, int $count):bool{
