@@ -30,6 +30,7 @@ https://github.com/Rark7040/GachaExample <br>
 $gacha = new Gacha(
 	'TestGacha',
 	'example',
+	new GachaMessages(),
 	new RandomItemTable(
 		PMGachaItem::create(Rarity::create('N', 60), VanillaItems::COAL()),
 		PMGachaItem::create(Rarity::create('R', 20), VanillaItems::IRON_INGOT()),
@@ -37,10 +38,10 @@ $gacha = new Gacha(
 		PMGachaItem::create(Rarity::create('SSR', 3), VanillaItems::DIAMOND()),
 		PMGachaItem::create(Rarity::create('UR', 0.6), VanillaItems::EMERALD()),
 	),
-	new ExampleTicket
+	new ExampleTicket()
 );
 
-$gacha->roll($player, 'チケットが足りません', 1);
+$gacha->roll($player, 1);
 ```
 <details>
 <summary> Other Code</summary>
