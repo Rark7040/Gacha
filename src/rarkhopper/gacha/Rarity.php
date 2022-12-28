@@ -8,11 +8,9 @@ class Rarity implements IRarity{
 	protected string $name;
 	protected float $emmitPer;
 
-	public static function create(string $name, float $emmitPer) : self{
-		$instance = new self();
-		$instance->name = $name;
-		$instance->emmitPer = $emmitPer;
-		return $instance;
+	public function __construct(string $name, float $emmitPer){
+		$this->name = $name;
+		$this->emmitPer = $emmitPer;
 	}
 
 	public function getName() : string{
