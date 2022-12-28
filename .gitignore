@@ -4,3 +4,4 @@
 .idea/**/dictionaries
 .idea/**/shelf
 /vendor/*
+.php-cs-fixer.cache
