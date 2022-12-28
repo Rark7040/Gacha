@@ -1,24 +1,25 @@
 <?php
+
 declare(strict_types=1);
 
 namespace rarkhopper\gacha;
 
 class Rarity implements IRarity{
 	protected string $name;
-	protected float $emmit_per;
+	protected float $emmitPer;
 
-	public static function create(string $name, float $emmit_per):static{
-		$instance = new static;
+	public static function create(string $name, float $emmitPer) : self{
+		$instance = new self();
 		$instance->name = $name;
-		$instance->emmit_per = $emmit_per;
+		$instance->emmitPer = $emmitPer;
 		return $instance;
 	}
 
-	public function getName():string{
+	public function getName() : string{
 		return $this->name;
 	}
 
-	public function getEmissionPercent():float{
-		return $this->emmit_per;
+	public function getEmissionPercent() : float{
+		return $this->emmitPer;
 	}
 }
