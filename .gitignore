@@ -4,4 +4,5 @@
 .idea/**/dictionaries
 .idea/**/shelf
 /vendor/*
+/build/*
 .php-cs-fixer.cache
